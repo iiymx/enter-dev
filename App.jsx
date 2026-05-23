@@ -142,7 +142,7 @@ function App() {
       id: 1,
       title: 'خبرة التصاميم',
       desc: 'نقدم حلولاً متكاملة في المقاولات والتصميم الداخلي والخارجي، لنحول أفكاركم إلى مشاريع تنبض بالجمال والجودة، نؤمن بأن كل مساحة تستحق تنفيذاً احترافياً يجمع بين الإبداع، الدقة، والالتزام بأعلى المعايير.',
-      tags: ['HTML', 'CSS'],
+      tags: ['Laravel', 'PHP', 'JavaScript', 'Full Stack'],
       category: 'مواقع الويب',
       bgClass: 'project-5-bg',
       url: 'https://www.khibracontracting.com/',
