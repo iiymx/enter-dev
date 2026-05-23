@@ -20,7 +20,7 @@ import {
 import { FaXTwitter, FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 import brandLogo from './images/logo.svg';
 import { motion, useInView, useMotionValue, useTransform, animate, useScroll, useSpring, AnimatePresence, useAnimationFrame } from 'framer-motion';
-import TargetCursor from './React/Cursor/TargetCursor';
+import TargetCursor from './React/cursor/TargetCursor';
 import khibraPreview from './images/khibra_preview.png';
 
 // Reusable scroll-aware animated section
