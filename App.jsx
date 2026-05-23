@@ -140,45 +140,9 @@ function App() {
   const INITIAL_PROJECTS = [
     {
       id: 1,
-      title: 'FinTech Dashboard',
-      desc: 'منصة تحليلات حديثة مع تصور للبيانات في الوقت الفعلي ورؤى تقنية عميقة.',
-      tags: ['React', 'Node.js'],
-      category: 'مواقع الويب',
-      bgClass: 'project-1-bg',
-      url: 'https://www.khibracontracting.com/'
-    },
-    {
-      id: 2,
-      title: 'Lumina E-Commerce',
-      desc: 'تجربة تسوق فاخرة عبر الإنترنت مع نظام سلس للدفع وإدارة المنتجات والمخزون.',
-      tags: ['Next.js', 'Stripe'],
-      category: 'مواقع الويب',
-      bgClass: 'project-2-bg',
-      url: 'https://www.khibracontracting.com/'
-    },
-    {
-      id: 3,
-      title: 'HealthTrack App',
-      desc: 'تطبيق محمول متكامل وسهل الاستخدام لتتبع اللياقة الشخصية والعادات الصحية.',
-      tags: ['React Native', 'Firebase'],
-      category: 'تطبيقات الجوال',
-      bgClass: 'project-3-bg',
-      url: 'https://www.khibracontracting.com/'
-    },
-    {
-      id: 4,
-      title: 'Enter.dev Branding',
-      desc: 'هوية بصرية متكاملة تعكس التطور التكنولوجي والاحترافية.',
-      tags: ['Figma', 'Illustrator'],
-      category: 'UI/UX',
-      bgClass: 'project-1-bg',
-      url: 'https://www.khibracontracting.com/'
-    },
-    {
-      id: 5,
-      title: 'Khibra Contracting',
-      desc: 'منصة رقمية رائدة لخدمات المقاولات والإنشاءات الهندسية، تم تطويرها لتقديم حلول إدارة المشاريع الإنشائية والتصميم المعماري المتطور مع تجربة تصفح تفاعلية وفائقة السرعة.',
-      tags: ['React.js', 'SEO', 'Cloud'],
+      title: 'خبرة التصاميم',
+      desc: 'نقدم حلولاً متكاملة في المقاولات والتصميم الداخلي والخارجي، لنحول أفكاركم إلى مشاريع تنبض بالجمال والجودة، نؤمن بأن كل مساحة تستحق تنفيذاً احترافياً يجمع بين الإبداع، الدقة، والالتزام بأعلى المعايير.',
+      tags: ['HTML', 'CSS'],
       category: 'مواقع الويب',
       bgClass: 'project-5-bg',
       url: 'https://www.khibracontracting.com/',
@@ -186,35 +150,10 @@ function App() {
     }
   ];
 
-  const [projects, setProjects] = useState(() => {
-    const local = localStorage.getItem('enter_dev_projects');
-    if (local) {
-      try {
-        return JSON.parse(local);
-      } catch (e) {
-        console.error("Error parsing local projects database", e);
-      }
-    }
-    return INITIAL_PROJECTS;
-  });
+  const [projects, setProjects] = useState(INITIAL_PROJECTS);
 
-  // Dynamic mounting fetch for Supabase Cloud DB
   useEffect(() => {
-    async function loadCloudProjects() {
-      try {
-        const { isSupabaseActive, fetchCloudProjects } = await import('./React/Admin/supabaseService');
-        if (isSupabaseActive()) {
-          const cloudList = await fetchCloudProjects();
-          if (cloudList && cloudList.length > 0) {
-            setProjects(cloudList);
-            localStorage.setItem('enter_dev_projects', JSON.stringify(cloudList));
-          }
-        }
-      } catch (error) {
-        console.error("Failed to load projects from cloud database on startup:", error);
-      }
-    }
-    loadCloudProjects();
+    localStorage.removeItem('enter_dev_projects');
   }, []);
 
 
