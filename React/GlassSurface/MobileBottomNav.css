@@ -1,0 +1,140 @@
+/* ============================================================
+   MobileBottomNav.css — Ported from MGT Section 2 styles
+   Adapted for Enter's premium Emerald-Green theme.
+   ============================================================ */
+
+@keyframes glass-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.glass-nav-wrapper {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: min(540px, 92vw);
+  display: block; /* Shown on mobile/tablet */
+  pointer-events: auto;
+}
+
+.glass-bottom-nav {
+  width: 100%;
+  height: 70px;
+  border-radius: 35px;
+  --glass-frost: 0.15;
+  --glass-saturation: 1.8;
+  position: relative;
+}
+
+.glass-bottom-nav .glass-surface__content {
+  padding: 0 10px;
+}
+
+/* Shimmer sweep */
+.glass-bottom-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0)   20%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(255, 255, 255, 0)   80%
+  );
+  background-size: 200% 100%;
+  animation: glass-shimmer 4s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-nav-items-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  z-index: 3;
+}
+
+/* ── Nav items ── */
+.glass-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--text-muted, #94a3b8);
+  transition: color 0.25s ease, transform 0.2s ease;
+  flex: 1;
+  padding: 6px 0;
+  border-radius: 24px;
+  position: relative;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  cursor: none !important; /* Matches Enter's custom cursor design */
+}
+
+/* Force standard cursor on coarse pointer devices */
+@media (hover: none) and (pointer: coarse) {
+  .glass-nav-item {
+    cursor: auto !important;
+  }
+}
+
+.glass-nav-item:hover,
+.glass-nav-item.active {
+  color: var(--neon-green, #00ff87);
+  transform: translateY(-2px);
+}
+
+.glass-nav-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+.glass-nav-item:hover .glass-nav-icon-wrapper svg,
+.glass-nav-item.active .glass-nav-icon-wrapper svg {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 7px rgba(16, 185, 129, 0.7));
+}
+
+.glass-nav-item span {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-family: 'Cairo', sans-serif;
+  transition: color 0.2s ease;
+}
+
+.glass-nav-active-dot {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--neon-green, #00ff87);
+  box-shadow: 0 0 8px var(--neon-green, #00ff87);
+  z-index: 4;
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE DESIGN: Hide navbar on desktop
+   ────────────────────────────────────────────── */
+@media (min-width: 992px) {
+  .glass-nav-wrapper {
+    display: none !important;
+  }
+}
